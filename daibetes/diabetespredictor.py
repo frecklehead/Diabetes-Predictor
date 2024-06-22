@@ -13,7 +13,7 @@ import os
 
 # Load the model
 try:
-    model_path = 'diabetes/trained_model.sav'
+    model_path = 'diabetes/model/trained_model.sav'
     if os.path.exists(model_path):
         with open(model_path, 'rb') as file:
             model = pickle.load(file)
