@@ -9,7 +9,7 @@ import numpy as np
 import pickle
 import streamlit as st
 
-model=pickle.load(open('/model/trained_model.sav','rb'))
+model=pickle.load(open('model/trained_model.sav','rb'))
 
 
 def prediction(input):
