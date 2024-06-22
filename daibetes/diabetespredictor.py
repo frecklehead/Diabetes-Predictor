@@ -10,21 +10,29 @@ import numpy as np
 import pickle
 import streamlit as st
 import os
+import sklearn  # Ensure sklearn is imported
+
+# Define the model path
+model_path = os.path.join(os.path.dirname(__file__), 'diabetes', 'model', 'trained_model.sav')
 
 # Load the model
 try:
-    model_path = 'diabetes/model/trained_model.sav'
     if os.path.exists(model_path):
         with open(model_path, 'rb') as file:
             model = pickle.load(file)
+        st.success("Model loaded successfully!")
     else:
         st.error(f"Model file not found at {model_path}")
+        st.stop()
 except ModuleNotFoundError as e:
     st.error(f"Required module not found: {e}")
+    st.stop()
 except FileNotFoundError as e:
     st.error(f"File not found: {e}")
+    st.stop()
 except Exception as e:
     st.error(f"An error occurred: {e}")
+    st.stop()
 
 # Prediction function
 def prediction(input):
